@@ -30,7 +30,7 @@ max_iter = 50
 max_num = 10000
 count = 0
 
-for i in range(1,max_num+1):
+for i in range(1,max_num):
     it = 0
     n = iterate(i)
     it += 1
@@ -38,7 +38,7 @@ for i in range(1,max_num+1):
         n = iterate(n)
         it += 1
     if check_pal(n):
-        print(i, n)
+        print(i, n, it)
         count += 1
 
-print(count)
+print(max_num - count - 1)
