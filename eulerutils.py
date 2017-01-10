@@ -31,7 +31,7 @@ def prime_list(maxval):
             b.append(k)
     return b
 	
-def prime_list(minval, maxval):
+def primelist(minval, maxval):
     # pl initially all 1s
     # set pl[0] = 0, pl[1] = 0
     # starting at pl[2]:

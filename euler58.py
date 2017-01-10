@@ -17,6 +17,34 @@
 import eulerutils
 import sys
 
-maxside = 7
-odds = [n for n in range(1,maxside**2+1,2)]
-print(odds)
+def find_answer(maxside):
+	if maxside == 1:
+		return False
+	pl = eulerutils.prime_list(maxside**2)
+
+	odds = [n for n in range(1,maxside**2+1,2)]
+	diags = list()
+	i = 0
+	layer = 0
+	layerend = 0
+	while i < len(odds):
+		diags.append(odds[i])
+		if i >= layerend:
+			layer += 1
+			layerend += 4*layer
+		i += layer
+	
+	primediags = list()
+	for d in diags:
+		if d in pl:
+			primediags.append(d)
+	ratio = len(primediags) / len(diags)
+	print("Side length: ", maxside)
+	print("Ratio: ", ratio)
+	return ratio < 0.1
+	
+side = 3001 #0.1333
+flag = False
+while not flag:
+	flag = find_answer(side)
+	side += 2
