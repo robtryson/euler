@@ -53,7 +53,6 @@ def prime_list_arr(maxval):
 	pl[1] = 0
 	i = 2
 	while i <= math.sqrt(maxval):
-		print(i)
 		if pl[i] == 1:
 			step = i
 			check = 2*i
