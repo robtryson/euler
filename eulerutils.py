@@ -1,6 +1,7 @@
 __author__ = 'RTryson'
 
 import math
+import numpy as np
 
 
 def prime_list(maxval):
@@ -37,6 +38,21 @@ def prime_list_ind(maxval):
     pl[1] = 0
     i = 2
     while i <= math.sqrt(maxval):
+        if pl[i] == 1:
+            step = i
+            check = 2*i
+            while check <= maxval:
+                pl[check] = 0
+                check += step
+        i += 1
+    return pl
+	
+def prime_list_arr(maxval):
+	pl = np.ones(maxval, dtype=np.bool_)
+	pl[0] = 0
+	pl[1] = 0
+	i = 2
+	while i <= math.sqrt(maxval):
         if pl[i] == 1:
             step = i
             check = 2*i
