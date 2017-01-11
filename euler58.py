@@ -43,6 +43,41 @@ def find_answer(maxside):
 	print("Ratio: ", ratio)
 	return ratio < 0.1
 	
+# to add a new layer - really only care about the numbers on the diags
+# just need oldmax and layer
+
+# number of diagonals = 4*layer + 1
+# on a layer, max value is (2*layer+1)**2
+# step value is equal to layer
+
+layer = 0
+ratio = 1
+side = 1
+print("calculating prime list")
+pl = eulerutils.prime_list_arr(10**9)
+print("done")
+pcount = 0
+
+layer = 8659
+pcount = 3638
+
+while ratio > 0.1:
+	layer += 1
+	step = 2*layer
+	max = (2*layer+1)**2
+	min = (2*(layer-1)+1)**2
+	side = 2*layer+1
+	diags = list(range(min+step, max+1, step))
+	for x in diags:
+		if pl[x]:
+			pcount += 1
+	print(diags)
+	numdiags = 4*layer + 1
+	ratio = pcount / numdiags
+	print(side, ratio)
+
+sys.exit()	
+	
 side = 3001 #0.1333
 flag = False
 while not flag:
